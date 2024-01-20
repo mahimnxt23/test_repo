@@ -1,0 +1,31 @@
+{% include "header.html" %}
+<!--  As a Section  -->
+<div class="row">
+    {%for cafe in all_cafes : %}
+    <div class="col-sm-6 col-md-4 col-lg-3 col">
+        <div class="card" style="width: 18rem;">
+            {% if cafe.id %2 != 0 %}
+            <a href="{{url_for('cafe', index=cafe.id)}}">
+                <img src="{{cafe.img_url}}" class="card-img-top" alt="{{cafe.name}}" height="200">
+                <h2 class="card-title">{{cafe.name}}</h2>
+            </a>
+            <div class="card-body">
+                <p class="card-text">Location : {{cafe.location}}</p>
+                <p class="card-text">Price : {{cafe.coffee_price}}</p>
+            </div>
+            {% else : %}
+            <a href="{{url_for('cafe', index=cafe.id)}}">
+                <img src="{{cafe.img_url}}" class="card-img-top" alt="{{cafe.name}}" height="200">
+                <h2 class="card-title">{{cafe.name}}</h2>
+            </a>
+            <div class="card-body">
+                <p class="card-text">Location : {{cafe.location}}</p>
+                <p class="card-text">Price : {{cafe.coffee_price}}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% include "footer.html" %}
